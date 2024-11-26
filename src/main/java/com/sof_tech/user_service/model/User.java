@@ -1,10 +1,7 @@
 package com.sof_tech.user_service.model;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,6 +11,8 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -39,5 +38,8 @@ public class User implements Serializable {
 
     @Column(name = "ABOUT", length = 255)  // Added length for the about
     private String about;
+
+    @Transient
+    private List<Rating> ratings=new ArrayList<>();
 
 }
