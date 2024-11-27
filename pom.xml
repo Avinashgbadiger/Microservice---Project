@@ -6,9 +6,10 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.0</version>
+		<version>3.0.6</version> <!-- Change this to a compatible version like 3.0.x -->
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 
 	<groupId>EMS</groupId>
 	<artifactId>sof-tech</artifactId>
@@ -18,50 +19,78 @@
 
 	<properties>
 		<java.version>17</java.version>
-	</properties>
 
+	</properties>
 	<dependencies>
-		<!-- Spring Boot Data JPA (to interact with databases) -->
+		<!-- Spring Boot Data JPA (for database interactions) -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
-		<!-- Spring Boot Web (for REST APIs, controllers) -->
+		<!-- Spring Boot Web (for building REST APIs and controllers) -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<!-- MySQL JDBC Driver -->
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.33</version> <!-- Ensure version is correct for your MySQL version -->
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+
+		<!-- MySQL JDBC Driver (for connecting to MySQL databases) -->
+		<!-- MySQL JDBC Driver (Correct artifact coordinates) -->
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<version>8.0.33</version>
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- Lombok for reducing boilerplate code -->
+
+		<!-- Lombok (for reducing boilerplate code) -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
 
-		<!-- Spring Boot Test for unit testing -->
+		<!-- Spring Boot Test (for unit and integration testing) -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 
-		<!-- H2 Database for in-memory testing (optional, only if required for tests) -->
+		<!-- H2 Database (for in-memory testing) -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>2022.0.0</version> <!-- This is compatible with Spring Boot 3.0.x -->
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+
+
+
+
 
 	<build>
 		<plugins>
