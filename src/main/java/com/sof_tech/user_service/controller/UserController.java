@@ -2,13 +2,17 @@ package com.sof_tech.user_service.controller;
 
 import com.sof_tech.user_service.model.User;
 import com.sof_tech.user_service.services.UserService;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/users")
@@ -28,6 +32,8 @@ public class UserController {
     @GetMapping("/user/{userId}")
     public ResponseEntity<?> getUserById(@PathVariable String userId) {
         User userById = this.userService.getUserById(userId);
+
+
         return new ResponseEntity<>(userById, HttpStatus.FOUND);
     }
 
